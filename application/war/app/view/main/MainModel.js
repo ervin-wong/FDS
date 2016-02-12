@@ -7,19 +7,23 @@ Ext.define('app.view.main.MainModel', {
     alias : 'viewmodel.main',
 
     data : {
-        name : '故障诊断系统',
+        name : 'app',
+
+        // 系统信息
         system : {
             name : '故障诊断系统',
-            version : '1.2016.02.25',
+            version : '5.2014.06.60',
             iconUrl : ''
         },
 
+        // 用户单位信息和用户信息
         user : {
             company : '武当太极公司',
             department : '工程部',
             name : '张三丰'
         },
 
+        // 服务单位和服务人员信息
         service : {
             company : '无锡熙旺公司',
             name : '蒋锋',
@@ -28,6 +32,10 @@ Ext.define('app.view.main.MainModel', {
             email : 'jfok1972@qq.com',
             copyright : '熙旺公司'
         },
+
+        menuType : {
+            value : 'toolbar'
+        }, // 菜单的位置，'button' , 'toolbar' , 'tree'
 
         // 系统菜单的定义，这个菜单可以是从后台通过ajax传过来的
         systemMenu : [ {
@@ -100,6 +108,24 @@ Ext.define('app.view.main.MainModel', {
             } ]
         } ]
     },
+
+    formulas : {
+
+        isButtonMenu : function(get) {
+            return get('menuType.value') == 'button';
+        },
+
+        isToolbarMenu : function(get) {
+            return get('menuType.value') == 'toolbar';
+        },
+
+        isTreeMenu : function(get) {
+            return get('menuType.value') == 'tree';
+        }
+
+    },
+
+    // 根据data.systemMenu生成菜单条和菜单按钮下面使用的菜单数据
     getMenus : function() {
         var items = [];
         var menuData = this.get('systemMenu'); // 取得定义好的菜单数据
@@ -126,5 +152,4 @@ Ext.define('app.view.main.MainModel', {
         });
         return items;
     }
-
 });

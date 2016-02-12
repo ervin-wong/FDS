@@ -7,21 +7,30 @@ Ext.define('app.view.main.region.Bottom', {
 
     alias : 'widget.mainbottom',
 
+    uses : [ 'app.ux.ButtonTransparent' ],
+
+    defaults : {
+        xtype : 'buttontransparent'
+    },
+
+    style : 'background-color : #f6f5ec;',
+
     items : [ {
         bind : {
-            text : '使用单位:{user.name}'
+            text : '使用单位:{user.company}'
         },
         glyph : 0xf0f7
     }, {
         bind : {
-            text : '{user.name}'
+            text : '用户:{user.name}'
         },
         glyph : 0xf007
     }, '->', {
         bind : {
-            text : '{service.company}',
+            text : '{service.company}'
         },
         glyph : 0xf059
+
     }, {
         bind : {
             text : '{service.name}'
