@@ -6,6 +6,11 @@ Ext.define('app.view.main.region.Top', {
     extend : 'Ext.toolbar.Toolbar',
 
     alias : 'widget.maintop', // 定义了这个组件的xtype类型为maintop
+    uses : ['app.ux.ButtonTransparent'],
+
+    defaults : {
+        xtype : 'buttontransparent'
+    },
 
     items : [ {
         xtype : 'image',
@@ -53,6 +58,10 @@ Ext.define('app.view.main.region.Top', {
     }, {
         text : '设置',
         glyph : 0xf013
+    }, {
+        glyph : 0xf102,
+        handler : 'hiddenTopBottom',
+        tooltip : '隐藏顶部和底部区域'
     }]
 
 });

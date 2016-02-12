@@ -13,7 +13,7 @@ Ext.define('app.view.main.Main', {
     ],
 
     xtype: 'app-main',
-    uses : ['app.view.main.region.Top', 'app.view.main.region.Bottom'],
+    uses : ['app.view.main.region.Top', 'app.view.main.region.Bottom','app.ux.ButtonTransparent','app.view.main.region.MainMenuToolbar'],
     controller: 'main',
     viewModel: {
         type: 'main'
@@ -27,13 +27,17 @@ Ext.define('app.view.main.Main', {
         xtype : 'maintop',
         region : 'north' // 把他放在最顶上
     }, {
+        xtype : 'mainmenutoolbar',
+        region : 'north' // 把他放在maintop的下面
+    }, {
         xtype : 'mainbottom',
         region : 'south' // 把他放在最底下
     }, {
         xtype: 'panel',
         bind: {
-            title: '{name}'
+            title: '主菜单'
         },
+        glyph: 0xf0c9,
         region: 'west',
         html: '<ul><li>This area is commonly used for navigation, for example, using a "tree" component.</li></ul>',
         width: 250,
@@ -42,11 +46,15 @@ Ext.define('app.view.main.Main', {
             text: 'Button',
             handler: 'onClickButton'
         }]
-    },{
+    }
+    ,{
         region: 'center',
         xtype: 'tabpanel',
         items:[{
             title: 'Tab 1',
+            html: '<h2>Content appropriate for the current navigation.</h2>'
+        }, {
+            title: 'Tab 2',
             html: '<h2>Content appropriate for the current navigation.</h2>'
         }]
     }],
