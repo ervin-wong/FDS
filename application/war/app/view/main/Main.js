@@ -13,7 +13,7 @@ Ext.define('app.view.main.Main', {
     ],
 
     xtype: 'app-main',
-    
+    uses : ['app.view.main.region.Top', 'app.view.main.region.Bottom'],
     controller: 'main',
     viewModel: {
         type: 'main'
@@ -24,6 +24,12 @@ Ext.define('app.view.main.Main', {
     },
 
     items: [{
+        xtype : 'maintop',
+        region : 'north' // 把他放在最顶上
+    }, {
+        xtype : 'mainbottom',
+        region : 'south' // 把他放在最底下
+    }, {
         xtype: 'panel',
         bind: {
             title: '{name}'
@@ -43,5 +49,11 @@ Ext.define('app.view.main.Main', {
             title: 'Tab 1',
             html: '<h2>Content appropriate for the current navigation.</h2>'
         }]
-    }]
+    }],
+
+    initComponent : function() {
+        Ext.setGlyphFontFamily('FontAwesome'); // 设置图标字体文件，只有设置了以后才能用glyph属性
+        this.callParent();
+    },
+
 });

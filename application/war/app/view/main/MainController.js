@@ -20,7 +20,7 @@ Ext.define('app.view.main.MainController', {
 
     onConfirm: function (choice) {
         if (choice === 'yes') {
-            this.getView().getViewModel().set('name' , "�޸ĺ��title");
+            this.getView().getViewModel().set('name' , "故障诊断系统");
         }
     }
 });
